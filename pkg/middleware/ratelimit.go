@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/HemlockPham7/common-libs/internal/app/repository/ratelimit"
+	"github.com/HemlockPham7/common-libs/pkg/ratelimitutils"
 	"github.com/HemlockPham7/common-libs/pkg/requestutils"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
@@ -16,10 +16,10 @@ type RateLimit interface {
 }
 
 type rateLimit struct {
-	repository ratelimit.Repository
+	repository ratelimitutils.Repository
 }
 
-func NewRateLimit(repository ratelimit.Repository) RateLimit {
+func NewRateLimit(repository ratelimitutils.Repository) RateLimit {
 	return &rateLimit{repository: repository}
 }
 
