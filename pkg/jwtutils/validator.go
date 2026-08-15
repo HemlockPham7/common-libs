@@ -8,6 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
+//go:generate mockery --name JWTValidator --filename jwt_validator.go --outpkg mocks
 type JWTValidator interface {
 	ValidateJWT(tokenStr string) (jwt.MapClaims, error)
 }
