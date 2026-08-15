@@ -18,9 +18,11 @@ ARG _outputdir="/tmp/coverage"
 ARG COVERAGE_EXCLUDE
 
 RUN mkdir -p ${_outputdir} && \
-    CGO_ENABLED=1 go test ./... -coverprofile=coverage.tmp -covermod=atomic -coverpkg=./... -p 1 && \
-    grop -vE "${COVERAGE_EXCLUDE}" coverage.tmp > ${_outputdir}/coverage.out && \
+    CGO_ENABLED=1 go test ./... -coverprofile=coverage.tmp -coverpkg=./... -covermode=atomic -p 1 && \
+    grep -vE "${COVERAGE_EXCLUDE}" coverage.tmp > ${_outputdir}/coverage.out && \
     go tool cover -html=${_outputdir}/coverage.out -o ${_outputdir}/coverage.html
+
+### Test ###
 
 FROM scratch AS test
 
