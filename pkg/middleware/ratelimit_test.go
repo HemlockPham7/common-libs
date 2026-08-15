@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/HemlockPham7/common-libs/internal/app/repository/ratelimit/mocks"
+	"github.com/HemlockPham7/common-libs/pkg/ratelimitutils/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/assert"
