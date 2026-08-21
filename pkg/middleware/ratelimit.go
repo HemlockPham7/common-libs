@@ -8,6 +8,7 @@ import (
 	"github.com/HemlockPham7/common-libs/pkg/ratelimitutils"
 	"github.com/HemlockPham7/common-libs/pkg/requestutils"
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 )
 
@@ -49,6 +50,13 @@ func (r *rateLimit) RateLimit() gin.HandlerFunc {
 		// check if rate limit exceeded
 		if currentRate >= RateLimitCount {
 			c.JSON(http.StatusTooManyRequests, gin.H{"error": "rate limit exceeded"})
+			c.Abort()
+			nrTransaction := newrelic.FromContext(c)
+			nrTransaction.Application().RecordCustomEvent("RateLimit", map[string]interface{}{
+				"client":   uid,
+				"cur_rate": currentRate,
+				"endpoint": c.Request.URL.Path,
+			})
 			return
 		}
 
