@@ -26,7 +26,7 @@ func NewRateLimit(repository ratelimitutils.Repository) RateLimit {
 
 const (
 	RateLimitInterval  = 1 * time.Minute // sliding window ton tai trong bao lau, moi mot phut check bao nhieu request
-	RateLimitCount     = 10              // so max request thuc hien trong 1 phut
+	RateLimitCount     = 25              // so max request thuc hien trong 1 phut
 	RateLimitKeyFormat = "rate_limit:%s"
 )
 
