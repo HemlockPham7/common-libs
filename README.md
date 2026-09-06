@@ -64,6 +64,8 @@ Reusable utilities for working with slices/arrays, such as splitting collections
 
 ### `pkg/common`
 
+Provides reusable common utilities shared across different packages, such as simple error-handling helpers.
+
 ### `pkg/csv`
 
 ### `pkg/dbutils`
