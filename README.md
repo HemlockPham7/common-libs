@@ -76,6 +76,8 @@ Provides reusable database utilities for normalizing and mapping database errors
 
 ### `pkg/dto`
 
+Defines reusable Data Transfer Objects (DTOs) for structuring API request and response payloads, including standardized success responses and pagination metadata.
+
 ### `pkg/errorutils`
 
 ### `pkg/jwtutils`
