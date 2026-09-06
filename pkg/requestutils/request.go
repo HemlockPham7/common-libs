@@ -14,6 +14,17 @@ var (
 	InputValidator = validator.New(validator.WithRequiredStructEnabled())
 )
 
+// BindInputFromRequest binds and validates request input from the JSON body,
+// URI parameters, query parameters, and request headers.
+//
+// JSON body binding is skipped for GET requests. The request is aborted with
+// HTTP 400 if binding or validation fails.
+//
+// Parameters:
+//   - c: the Gin context containing the incoming HTTP request.
+//
+// Returns:
+//   - A pointer to the populated and validated input, or an error if binding or validation fails.
 func BindInputFromRequest[T any](c *gin.Context) (*T, error) {
 	reqInput := new(T)
 
@@ -43,6 +54,15 @@ func BindInputFromRequest[T any](c *gin.Context) (*T, error) {
 	return reqInput, nil
 }
 
+// BindInputFromRequestWithAuth binds and validates request input and extracts
+// the authenticated user ID from the JWT claims.
+//
+// Parameters:
+//   - c: the Gin context containing the incoming HTTP request and JWT claims.
+//
+// Returns:
+//   - The populated and validated input, the authenticated user ID,
+//     or an error if request binding, validation, or authentication fails.
 func BindInputFromRequestWithAuth[T any](c *gin.Context) (*T, string, error) {
 	input, err := BindInputFromRequest[T](c)
 	if err != nil {

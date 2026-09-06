@@ -20,6 +20,16 @@ var PrivateKeyCompromiseWarning = newrelic.Error{
 	Class:   "JWTError",
 }
 
+// GetUserIDFromRequest extracts the authenticated user ID from JWT claims stored in the Gin context.
+//
+// The user ID is read from the "sub" claim. The request is aborted with HTTP 401
+// if the claims are missing, invalid, or the user ID is empty.
+//
+// Parameters:
+//   - c: the Gin context containing the authenticated user's JWT claims.
+//
+// Returns:
+//   - The authenticated user ID, or an error if the claims or user ID are invalid.
 func GetUserIDFromRequest(c *gin.Context) (string, error) {
 	claims, exist := c.Get("claims")
 	if !exist {

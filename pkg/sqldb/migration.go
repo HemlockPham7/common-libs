@@ -26,11 +26,13 @@ func MigrateSQLDB(db *gorm.DB, migrationPath string, mode string, steps int) err
 		return err
 	}
 
+	// golang-migrate requires a driver to know: "Which PostgreSQL instance am I working with?" — the pgDriver serves as the adapter between:
 	pgDriver, err := postgres.WithInstance(sqlDB, &postgres.Config{})
 	if err != nil {
 		return err
 	}
 
+	// Initialize the migration instance
 	m, err := migrate.NewWithDatabaseInstance(migrationPath, db.Name(), pgDriver)
 	if err != nil {
 		return err
