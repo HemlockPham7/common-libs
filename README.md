@@ -68,6 +68,8 @@ Provides reusable common utilities shared across different packages, such as sim
 
 ### `pkg/csv`
 
+Provides reusable CSV utilities for parsing CSV files, including files uploaded through multipart form requests.
+
 ### `pkg/dbutils`
 
 ### `pkg/dto`
