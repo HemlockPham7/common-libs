@@ -60,6 +60,8 @@ import (
 
 ### `pkg/array`
 
+Reusable utilities for working with slices/arrays, such as splitting collections into batches with minimal memory allocation.
+
 ### `pkg/common`
 
 ### `pkg/csv`
