@@ -46,7 +46,7 @@ go get github.com/HemlockPham7/common-libs
 
 ## Usage
 
-Import the packages you need:
+Import the packages you need, for example:
 
 ```go
 import (
@@ -58,47 +58,24 @@ import (
 
 ## Packages
 
-### `pkg/array`
-
-Reusable utilities for working with slices/arrays, such as splitting collections into batches with minimal memory allocation.
-
-### `pkg/common`
-
-Provides reusable common utilities shared across different packages, such as simple error-handling helpers.
-
-### `pkg/csv`
-
-Provides reusable CSV utilities for parsing CSV files, including files uploaded through multipart form requests.
-
-### `pkg/dbutils`
-
-Provides reusable database utilities for normalizing and mapping database errors into application-level errors.
-
-### `pkg/dto`
-
-Defines reusable Data Transfer Objects (DTOs) for structuring API request and response payloads, including standardized success responses and pagination metadata.
-
-### `pkg/errorutils`
-
-### `pkg/jwtutils`
-
-### `pkg/logger`
-
-### `pkg/middleware`
-
-### `pkg/nrtrace`
-
-### `pkg/ratelimitutils`
-
-### `pkg/redis`
-
-### `pkg/requestutils`
-
-### `pkg/response`
-
-### `pkg/sqldb`
-
-### `pkg/utils`
+| Package Name         | Description                                                                                                                                                                            |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `pkg/array`          | Reusable utilities for working with slices/arrays, such as splitting collections into batches with minimal memory allocation.                                                          |
+| `pkg/common`         | Provides reusable common utilities shared across different packages, such as simple error-handling helpers.                                                                            |
+| `pkg/csv`            | Provides reusable CSV utilities for parsing CSV files, including files uploaded through multipart form requests.                                                                       |
+| `pkg/dbutils`        | Provides reusable database utilities for normalizing and mapping database errors into application-level errors.                                                                        |
+| `pkg/dto`            | Defines reusable Data Transfer Objects (DTOs) for structuring API request and response payloads, including standardized success responses and pagination metadata.                     |
+| `pkg/errorutils`     | Provides reusable error handling utilities for normalizing and mapping errors into application-level errors.                                                                           |
+| `pkg/jwtutils`       | Provides reusable utilities for generating and validating JSON Web Tokens (JWT) using RSA key pairs, including JWT signing with a private key and token validation with a public key.  |
+| `pkg/logger`         |                                                                                                                                                                                        |
+| `pkg/middleware`     |                                                                                                                                                                                        |
+| `pkg/nrtrace`        |                                                                                                                                                                                        |
+| `pkg/ratelimitutils` |                                                                                                                                                                                        |
+| `pkg/redis`          |                                                                                                                                                                                        |
+| `pkg/requestutils`   |                                                                                                                                                                                        |
+| `pkg/response`       |                                                                                                                                                                                        |
+| `pkg/sqldb`          |                                                                                                                                                                                        |
+| `pkg/utils`          |                                                                                                                                                                                        |
 
 ## Development
 

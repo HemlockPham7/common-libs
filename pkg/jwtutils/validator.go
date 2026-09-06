@@ -17,6 +17,13 @@ type jwtValidator struct {
 	publicKey *rsa.PublicKey
 }
 
+// NewJWTValidator creates a JWT validator using an RSA public key loaded from the given file path.
+//
+// Parameters:
+//   - publicKeyPath: the path to the RSA public key file.
+//
+// Returns:
+//   - A JWTValidator initialized with the public key, or an error if the key cannot be read or parsed.
 func NewJWTValidator(publicKeyPath string) (JWTValidator, error) {
 	publicKeyData, err := os.ReadFile(publicKeyPath)
 	if err != nil {
@@ -33,6 +40,14 @@ func NewJWTValidator(publicKeyPath string) (JWTValidator, error) {
 	}, nil
 }
 
+// ValidateJWT validates a JWT using the configured RSA public key and extracts its claims.
+//
+// Parameters:
+//   - tokenStr: the JWT string to validate.
+//
+// Returns:
+//   - The JWT claims if the token is valid, or an error if the token is invalid
+//     or its claims cannot be extracted.
 func (v *jwtValidator) ValidateJWT(tokenStr string) (jwt.MapClaims, error) {
 	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
 		return v.publicKey, nil
