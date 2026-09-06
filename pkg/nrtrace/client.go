@@ -13,6 +13,14 @@ type config struct {
 	LogForwardEnabled bool   `envconfig:"NR_LOG_FORWARD_ENABLED" default:"true"`
 }
 
+// newConfig loads New Relic configuration from environment variables
+// using the specified environment variable prefix.
+//
+// Parameters:
+//   - envPrefix: the prefix used to load New Relic configuration values.
+//
+// Returns:
+//   - The loaded configuration, or an error if the configuration cannot be processed.
 func newConfig(envPrefix string) (*config, error) {
 	cfg := &config{}
 	err := envconfig.Process(envPrefix, cfg)
@@ -22,6 +30,17 @@ func newConfig(envPrefix string) (*config, error) {
 	return cfg, err
 }
 
+// NewClient creates a New Relic application using configuration loaded from environment variables.
+//
+// The New Relic license is required. An error is returned if the license is missing
+// or the application cannot be initialized.
+//
+// Parameters:
+//   - envPrefix: the prefix used to load New Relic configuration values.
+//
+// Returns:
+//   - A configured New Relic application, or an error if the configuration is invalid
+//     or the application cannot be initialized.
 func NewClient(envPrefix string) (*newrelic.Application, error) {
 	conf, err := newConfig(envPrefix)
 	if err != nil {
