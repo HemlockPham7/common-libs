@@ -72,6 +72,8 @@ Provides reusable CSV utilities for parsing CSV files, including files uploaded 
 
 ### `pkg/dbutils`
 
+Provides reusable database utilities for normalizing and mapping database errors into application-level errors.
+
 ### `pkg/dto`
 
 ### `pkg/errorutils`
