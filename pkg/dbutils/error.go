@@ -23,6 +23,18 @@ var (
 	ErrRecordNotFoundType  = errors.New("record not found")
 )
 
+// CatchDBError normalizes database errors into application-level errors.
+//
+// It returns nil when err is nil. If the error matches a known database error,
+// it returns the corresponding application-level error. Otherwise, it returns
+// the original error unchanged.
+//
+// Parameters:
+//   - err: the database error to normalize.
+//
+// Returns:
+//   - A normalized application-level error, the original error if no filter matches,
+//     or nil when err is nil.
 func CatchDBError(err error) error {
 	if err == nil {
 		return nil

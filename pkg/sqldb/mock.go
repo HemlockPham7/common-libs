@@ -8,6 +8,15 @@ import (
 	"gorm.io/gorm/logger"
 )
 
+// InitMockDB creates an in-memory SQLite database for testing.
+//
+// The database uses silent logging to keep test output clean.
+//
+// Parameters:
+//   - t: the testing instance used to report database initialization failures.
+//
+// Returns:
+//   - An in-memory SQLite database configured for testing.
 func InitMockDB(t *testing.T) *gorm.DB {
 	dsn := ":memory:"
 	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{

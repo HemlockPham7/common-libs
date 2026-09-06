@@ -8,7 +8,14 @@ type config struct {
 	DB       int    `default:"0" envconfig:"REDIS_DB"`
 }
 
-// newConfig creates a new config
+// newConfig loads Redis configuration from environment variables
+// using the specified environment variable prefix.
+//
+// Parameters:
+//   - envPrefix: the prefix used to load Redis configuration values.
+//
+// Returns:
+//   - The loaded Redis configuration, or an error if the configuration cannot be processed.
 func newConfig(envPrefix string) (*config, error) {
 	cfg := &config{}
 	err := envconfig.Process(envPrefix, cfg)

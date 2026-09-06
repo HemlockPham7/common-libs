@@ -30,6 +30,16 @@ var (
 	}
 )
 
+// InputFieldError converts a validation error into a standardized input error response.
+//
+// If err is not a validator.ValidationErrors, it returns the default InputErrResponse.
+// Otherwise, it returns a response containing the validation errors for each invalid field.
+//
+// Parameters:
+//   - err: the validation error to convert.
+//
+// Returns:
+//   - A standardized Message containing the validation error details.
 func InputFieldError(err error) Message {
 	if ok := errors.As(err, &validator.ValidationErrors{}); !ok { // khi fail input binding validation
 		return InputErrResponse
